@@ -1,0 +1,29 @@
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-card {
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  .description, .mission-vision {
+    margin: 20px 0;
+  }
+  
+  .mission, .vision {
+    margin: 10px 0;
+  }
+  
+  .mission h3, .vision h3 {
+    margin-bottom: 10px;
+  }
+  

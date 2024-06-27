@@ -8,3 +8,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .example-spacer {
     flex: 1 1 auto;
   }
+
+  .active-link {
+    font-weight: bold;
+    color: #fff; /* Puedes ajustar el color según tus necesidades */
+    background-color: #1976d2; /* Ajusta el color de fondo según tus necesidades */
+  }
+  
+  
+  
