@@ -2,7 +2,14 @@
 
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  margin: 0;
+  width: 100%; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden; 
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #333; color: #fff;  }
 
 .example-spacer {
@@ -13,6 +20,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     font-weight: bold;
     color: #fff; /* Puedes ajustar el color según tus necesidades */
     background-color: #1976d2; /* Ajusta el color de fondo según tus necesidades */
+  }
+
+  .center-horizontal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
   }
 
   

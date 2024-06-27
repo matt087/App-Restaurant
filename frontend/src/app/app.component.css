@@ -1,18 +1,25 @@
 .mat-toolbar {
     background-color: #333; /* Fondo oscuro para la barra de navegación */
     color: #fff; /* Color del texto en la barra de navegación */
+    height: 12vh;
   }
-  
+  .logo{
+    height: 13vh;
+  }
   .logo img{
-    width: 50%; /* Ancho completo */
-    height: auto;
-    margin-right: -500px;
-    margin-top: 30px;
+    width: auto; /* Ancho completo */
+    height: 100%;
+    /*margin-right: -500px;
+    margin-top: 30px;*/
   }
   
   .brand {
-    flex: 1; /* Ocupa el espacio restante */
+    height: 13vh;
+    width: 70%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .brand-name {
@@ -33,4 +40,5 @@
     background-color: #E53935; /* Color de fondo rojo al pasar el mouse o activo */
     border-radius: 5px; /* Bordes redondeados */
   }
+
   
