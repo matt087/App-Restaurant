@@ -1,0 +1,36 @@
+.mat-toolbar {
+    background-color: #333; /* Fondo oscuro para la barra de navegación */
+    color: #fff; /* Color del texto en la barra de navegación */
+  }
+  
+  .logo img{
+    width: 50%; /* Ancho completo */
+    height: auto;
+    margin-right: -500px;
+    margin-top: 30px;
+  }
+  
+  .brand {
+    flex: 1; /* Ocupa el espacio restante */
+    text-align: center;
+  }
+  
+  .brand-name {
+    font-size: 1.5rem; /* Tamaño de fuente para el nombre del restaurante */
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-links button {
+    color: #fff; /* Color del texto de los botones */
+    margin: 0 10px; /* Espacio entre los botones */
+  }
+  
+  .nav-links button:hover,
+  .nav-links button.active-link {
+    background-color: #E53935; /* Color de fondo rojo al pasar el mouse o activo */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  

@@ -1,43 +1,41 @@
 <div class="home-container">
-    <div class="carousel-container">
-      <button mat-icon-button (click)="previousSlide()">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-      <mat-card class="carousel-card">
-        <img mat-card-image [src]="slides[currentSlide].image" alt="Platillo de la casa">
-        <mat-card-content>
-          <h3>{{ slides[currentSlide].caption }}</h3>
-        </mat-card-content>
-      </mat-card>
-      <button mat-icon-button (click)="nextSlide()">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
-    </div>
-  
-    <div class="description">
-      <h2>Bienvenidos a Casa ApiRes</h2>
+  <div class="header">
+    <h1>Bienvenidos a Casa ApiRes</h1>
+    <br>
+    <h2>Descubre nuestra deliciosa gastronomía</h2>
+  </div>  
+  <div class="carousel-container">
+    <button mat-icon-button (click)="previousSlide()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <mat-card class="carousel-card">
+      <img mat-card-image [src]="slides[currentSlide].image" alt="Platillo de la casa">
+    </mat-card>
+    <button mat-icon-button (click)="nextSlide()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="description">
+    <p>
+      En Casa ApiRes, combinamos la tradición culinaria con la frescura de nuestros ingredientes para ofrecerte una experiencia única.
+      Nuestros platillos están cuidadosamente elaborados para deleitar tu paladar y satisfacer tus sentidos.
+    </p>
+  </div>  
+
+  <div class="mission-vision">
+    <div class="mission">
+      <h2>Misión</h2>
       <p>
-        Casa ApiRes es un lugar donde la gastronomía se encuentra con la tradición y la innovación. Ofrecemos una experiencia culinaria única
-        con los mejores platillos de la región, elaborados con ingredientes frescos y de alta calidad.
+        Nuestra misión es ofrecer a nuestros clientes una experiencia gastronómica excepcional, destacando la riqueza y diversidad de la cocina regional, con un servicio de calidad y un ambiente acogedor.
       </p>
     </div>
   
-    <div class="mission-vision">
-      <div class="mission">
-        <h3>Misión</h3>
-        <p>
-          Nuestra misión es ofrecer a nuestros clientes una experiencia gastronómica excepcional, destacando la riqueza y diversidad de la
-          cocina regional, con un servicio de calidad y un ambiente acogedor.
-        </p>
-      </div>
-  
-      <div class="vision">
-        <h3>Visión</h3>
-        <p>
-          Ser reconocidos como el restaurante líder en la región, famoso por nuestra innovación culinaria, la excelencia en el servicio y el
-          compromiso con la satisfacción del cliente.
-        </p>
-      </div>
+    <div class="vision">
+      <h2>Visión</h2>
+      <p>
+        Ser reconocidos como el restaurante líder en la región, famoso por nuestra innovación culinaria, la excelencia en el servicio y el compromiso con la satisfacción del cliente.
+      </p>
     </div>
-  </div>
-  
+  </div>  
+</div>
