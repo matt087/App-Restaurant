@@ -1,0 +1,103 @@
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.carousel-card {
+  width: 70%;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid gold; /* Establecer borde dorado */
+  border-radius: 10px; /* Opcional: redondear las esquinas */
+  overflow: hidden;
+}
+
+.mat-card-image {
+  width: 100%; /* Ancho completo */
+  height: auto; /* Altura automática */
+  object-fit: cover; /* Ajustar imagen manteniendo proporción */
+}
+
+.carousel-card img {
+  width: 100%; /* Asegurar que la imagen ocupe todo el espacio de la tarjeta */
+  height: auto; /* Mantener la proporción de la imagen */
+}
+
+.carousel-image {
+  max-width: 100%; /* Ajusta el ancho máximo según el contenedor */
+  max-height: 400px; /* Altura máxima para las imágenes del carrusel */
+  object-fit: cover; /* Ajusta el tamaño de la imagen manteniendo la proporción */
+}
+
+.description, .mission-vision {
+  margin: 20px 0;
+}
+
+.header {
+  background-color: #E53935;
+  color: #212121;
+  padding: 30px 20px;
+  text-align: center;
+  margin-bottom: 30px; /* Separación adicional hacia abajo */
+  border-radius: 10px;
+}
+
+.header h1 {
+  font-size: 2.5rem; /* Tamaño de fuente grande para el título principal */
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem; /* Tamaño de fuente para el subtítulo */
+}
+
+.description {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #444; /* Color de fondo suave */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.mission-vision {
+  display: flex;
+  justify-content: space-around;
+  margin: 60px 0;
+}
+
+.mission, .vision {
+  flex: 1;
+  padding: 20px;
+  background-color: #444;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 30px;
+}
+
+.mission h2, .vision h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #E53935;
+}
+
+.mission p, .vision p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+  color: #f5f5f5;
+}
+

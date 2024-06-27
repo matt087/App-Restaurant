@@ -1,0 +1,32 @@
+{
+    "platillos": [
+      {
+        "nombre": "Bife de Chorizo",
+        "descripcion": "Corte argentino proveniente de la cara externa del lomo de res",
+        "precio": 11.99,
+        "imagen": "../assets/images/bife.jpg",
+        "alt": "Imagen de bife de chorizo"
+      },    
+      {
+        "nombre": "Ribeye",
+        "descripcion": "Corte estadounidense proveniente de la costilla de res",
+        "precio": 13.99,
+        "imagen": "../assets/images/ribeye.jpg",
+        "alt": "Imagen de ribeye"
+      },
+      {
+        "nombre": "Chuletas de Cordero",
+        "descripcion": "Corte uruguayo proveniente de la costilla de cordero",
+        "precio": 19.99,
+        "imagen": "../assets/images/chuleta.jpg",
+        "alt": "Imagen de chuleta de cordero"
+      },
+      {
+        "nombre": "Lomo Fino",
+        "descripcion": "Corte proveniente del lomo de res",
+        "precio": 9.99,
+        "imagen": "../assets/images/lomo.jpg",
+        "alt": "Imagen de lomo de res"
+      }
+    ]
+  }

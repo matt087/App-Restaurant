@@ -1,0 +1,11 @@
+<mat-grid-list cols="3" rowHeight="1.8:1">
+    <mat-grid-tile *ngFor="let item of myArray">
+      <div>
+        <h3>{{ item.nombre }}</h3>
+        <p>{{ item.descripcion }}</p>
+        <p>{{ item.precio | currency }}</p>
+        <img [src]="item.imagen" [alt]="item.alt" style="width: 40%;">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
