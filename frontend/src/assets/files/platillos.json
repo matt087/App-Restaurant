@@ -27,6 +27,13 @@
         "precio": 9.99,
         "imagen": "../assets/images/lomo.jpg",
         "alt": "Imagen de lomo de res"
+      },
+      {
+        "nombre": "T-Bone",
+        "descripcion": "Corte norteamericano en forma de T",
+        "precio": 13.99,
+        "imagen": "../assets/images/lomo.jpg",
+        "alt": "Imagen de T-Bone"
       }
     ]
   }

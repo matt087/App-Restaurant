@@ -15,6 +15,10 @@ import { QualificationComponent } from './components/qualification/qualification
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    FontAwesomeModule
 
   ],
   providers: [
@@ -43,4 +48,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule 
+{ 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faFacebookF, faTwitter, faInstagram, faLinkedinIn);
+  }
+}
