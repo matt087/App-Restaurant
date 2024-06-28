@@ -1,0 +1,99 @@
+.contact-container {
+    padding: 20px;
+  }
+  
+  .contact-card {
+    background-color: #212121;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .contact-icon {
+    color: gold;
+  }
+  
+  .map-container {
+    margin-top: 20px;
+  }
+  
+  .divider-red {
+    border-top: 1px solid #E53935; /* Color rojo definido */
+    width: 50%; /* Ancho deseado */
+    margin: 20px auto; /* Margen para centrarlo y separarlo */
+  }
+  
+  .developer-contact {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .developer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* Espaciado interno */
+    border: 2px solid #D3B200; /* Borde para destacar la tarjeta */
+    background-color: #212121;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+    width: 40%; /* Ancho deseado */
+    max-width: 300px; /* Ancho máximo para dispositivos pequeños */
+  }
+
+  .developer:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  }
+  
+  .developer-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  .developer-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    margin: 0 10px;
+    color: #D3B200; /* Color dorado para los íconos */
+    font-size: 1.5rem; /* Tamaño de ícono más grande */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2); /* Escala un poco el ícono al hacer hover */
+  }
+
+  .developer p {
+    font-size: 1.5rem; /* Tamaño de fuente más grande para los nombres */
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  
