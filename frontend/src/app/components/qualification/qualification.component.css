@@ -1,0 +1,55 @@
+.qualification-form {
+    max-width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #444; /* Color de fondo más oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar el formulario */
+    color: #f5f5f5; /* Color de texto claro */
+  }
+  
+  mat-card {
+    padding: 20px;
+    background-color: #555; /* Color de fondo del card */
+    color: #f5f5f5; /* Color de texto */
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  mat-form-field.mat-form-field {
+    background: #666; /* Fondo para los campos de formulario */
+    border-radius: 5px;
+  }
+  
+  mat-form-field .mat-form-field-label {
+    color: #f5f5f5; /* Color del label */
+  }
+  
+  button {
+    margin-top: 0px;
+  }
+  
+  mat-card-title {
+    color: #E53935; /* Color del título */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  mat-card-content {
+    color: #f5f5f5; /* Color del contenido */
+  }
+  
+  .mat-radio-button .mat-radio-label-content {
+    color: #f5f5f5; /* Color de los botones de radio */
+  }
+  
+  .form-section-title {
+    color: #E53935;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }

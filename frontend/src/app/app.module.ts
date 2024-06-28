@@ -17,6 +17,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,14 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
     MatCardModule,
     MatIconModule,
     MatGridListModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatSliderModule
   ],
   providers: [
     provideClientHydration(),
