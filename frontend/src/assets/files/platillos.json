@@ -2,7 +2,7 @@
     "platillos": [
       {
         "nombre": "Bife de Chorizo",
-        "descripcion": "Corte argentino proveniente de la cara externa del lomo de res",
+        "descripcion": "Corte argentino proveniente de una cara del lomo de res",
         "precio": 11.99,
         "imagen": "../assets/images/bife.jpg",
         "alt": "Imagen de bife de chorizo"
@@ -32,8 +32,36 @@
         "nombre": "T-Bone",
         "descripcion": "Corte norteamericano en forma de T",
         "precio": 13.99,
-        "imagen": "../assets/images/lomo.jpg",
+        "imagen": "../assets/images/tbone.jpg",
         "alt": "Imagen de T-Bone"
+      },
+      {
+        "nombre": "Filet Mignon",
+        "descripcion": "Corte francés proveniente del extremo del solomillo",
+        "precio": 15.99,
+        "imagen": "../assets/images/filet.jpg",
+        "alt": "Imagen de Filet Mignon"
+      },
+      {
+        "nombre": "Costillas BBQ",
+        "descripcion": "Corte estadounidense típico bañado en salsa de la casa",
+        "precio": 18.99,
+        "imagen": "../assets/images/costillas.jpg",
+        "alt": "Imagen de Costillas BBQ"
+      },
+      {
+        "nombre": "Brisket",
+        "descripcion": "Delicia típica de Texas cocinada por más de 8 horas",
+        "precio": 39.99,
+        "imagen": "../assets/images/brisket.jpg",
+        "alt": "Imagen de Brisket"
+      },
+      {
+        "nombre": "Chinchulines",
+        "descripcion": "Vísceras de res asadas lentamente al carbón",
+        "precio": 7.99,
+        "imagen": "../assets/images/tripa.jpg",
+        "alt": "Imagen de Chinchulines"  
       }
     ]
   }

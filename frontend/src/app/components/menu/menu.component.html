@@ -1,13 +1,13 @@
 <div class="full-height">
     <h2>Menú</h2>
     <div class="container">
-        <mat-grid-list cols="3" rowHeight="1.8:1" gutterSize="10px">
+        <mat-grid-list cols="3" rowHeight="1.8:1" gutterSize="15px">
             <mat-grid-tile *ngFor="let item of myArray">
                 <div>
                 <h3>{{ item.nombre }}</h3>
                 <p>{{ item.descripcion }}</p>
                 <p class="precio">{{ item.precio | currency }}</p>
-                <img [src]="item.imagen" [alt]="item.alt" style="width: 40%;">
+                <img class="img" [src]="item.imagen" [alt]="item.alt">
                 </div>
             </mat-grid-tile>
         </mat-grid-list> 
