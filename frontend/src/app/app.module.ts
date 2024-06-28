@@ -18,8 +18,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +38,6 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
     MatIconModule,
     MatGridListModule,
     FontAwesomeModule
-
   ],
   providers: [
     provideClientHydration(),
@@ -48,9 +45,9 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule 
-{ 
+export class AppModule {
   constructor(library: FaIconLibrary) {
+    // Asegurarse de que los iconos se añadan correctamente al constructor
     library.addIcons(faFacebookF, faTwitter, faInstagram, faLinkedinIn);
   }
 }
