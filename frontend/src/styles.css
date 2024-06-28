@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Wellfleet&display=swap');
 
 html, body {
   height: 100%;

@@ -23,7 +23,8 @@
   }
   
   .brand-name {
-    font-size: 1.5rem; /* Tamaño de fuente para el nombre del restaurante */
+    font-size: 2.5rem; /* Tamaño de fuente para el nombre del restaurante */
+    font-family: "Wellfleet", monospace;
   }
   
   .nav-links {
@@ -33,6 +34,7 @@
   .nav-links button {
     color: #fff; /* Color del texto de los botones */
     margin: 0 10px; /* Espacio entre los botones */
+    font-size: 17px;
   }
   
   .nav-links button:hover,
