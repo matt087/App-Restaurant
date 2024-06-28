@@ -33,9 +33,11 @@
   }
   
   mat-card-title {
-    color: #E53935; /* Color del título */
+    color: #ECB100; /* Color del título */
     font-size: 1.5rem;
     margin-bottom: 20px;
+    font-family: "Wellfleet", monospace;
+
   }
   
   mat-card-content {
