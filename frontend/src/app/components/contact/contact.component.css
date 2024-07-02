@@ -46,7 +46,7 @@
     align-items: center;
     text-align: center;
     padding: 20px; /* Espaciado interno */
-    border: 2px solid #D3B200; /* Borde para destacar la tarjeta */
+    border: 2px solid #ECB100;; /* Borde para destacar la tarjeta */
     background-color: #212121;
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
@@ -81,7 +81,7 @@
   
   .social-icon {
     margin: 0 10px;
-    color: #D3B200; /* Color dorado para los íconos */
+    color: #ECB100; /* Color dorado para los íconos */
     font-size: 1.5rem; /* Tamaño de ícono más grande */
     transition: transform 0.3s ease-in-out;
   }
@@ -96,4 +96,9 @@
     margin-bottom: 25px;
   }
 
-  
+  mat-card-title{
+    font-family: "Wellfleet", monospace;
+    color: #ECB100;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }

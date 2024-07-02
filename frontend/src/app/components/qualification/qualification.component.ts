@@ -31,6 +31,7 @@ export class QualificationComponent {
   onSubmit(): void {
     if (this.qualificationForm.valid) {
       console.log(this.qualificationForm.value);
+      
       // aquí podrías manejar el envío del formulario
     }
   }
