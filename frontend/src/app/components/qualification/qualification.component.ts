@@ -14,8 +14,8 @@ export class QualificationComponent {
   waitressOptions: Mesero[] = [];
 
   constructor(private fb: FormBuilder, private qs:CalificacionesService) {
-    this.qs.getData().subscribe(data =>{
-        this.waitressOptions = data.meseros;
+    this.qs.getWaiter().subscribe(data =>{
+        this.waitressOptions = data;
         console.log(this.waitressOptions);
     });
     this.qualificationForm = this.fb.group({

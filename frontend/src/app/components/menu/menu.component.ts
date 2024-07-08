@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit{
   myArray: Platillo[] = [];
   constructor(private pService:PlatillosService){
     this.pService.getData().subscribe(data =>{
-      this.myArray = data.platillos;
+      this.myArray = data;
       console.log(this.myArray);
   }); 
   }

@@ -7,10 +7,10 @@ import { Mesero } from '../models/mesero';
   providedIn: 'root'
 })
 export class CalificacionesService {
-  private jsonUrl = '../assets/files/meseros.json';
+  private apiUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) {}
-  getData(): Observable<any> {
-    return this.http.get<Mesero[]>(this.jsonUrl);
+  getWaiter(): Observable<any> {
+    return this.http.get<Mesero>(`${this.apiUrl}/waiters`);
   }
 }

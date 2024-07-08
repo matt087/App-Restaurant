@@ -7,10 +7,13 @@ import { Platillo } from '../models/platillo';
   providedIn: 'root'
 })
 export class PlatillosService {
-  private jsonUrl = '../assets/files/platillos.json';
+  private apiUrl = 'http://localhost:3000'; 
   
   constructor(private http: HttpClient) {}
+
   getData(): Observable<any> {
-    return this.http.get<Platillo[]>(this.jsonUrl);
-  } 
+    return this.http.get<Platillo>(`${this.apiUrl}/dishes`);
+  }
+
+  
 }
