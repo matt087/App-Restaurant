@@ -3,7 +3,7 @@ const router = Router();
 
 const Dish = require('../models/dish');
 const Waiter = require('../models/waiter');
-
+const Info = require('../models/info');
 
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
@@ -59,6 +59,37 @@ router.get('/waiters', (req, res) => {
         res.status(500).send('Error al obtener los meseros');
         });
     });
+
+//DATOS  
+router.put('/edit-info/:id', (req, res) => {
+  const infoId = req.params.id;
+  const updatedInfo = req.body;
+
+  Info.findByIdAndUpdate(infoId, updatedInfo, { new: true })
+    .then(updated => {
+      if (updated) {
+        res.json({ message: 'Información actualizada correctamente', edit: updated });
+      } else {
+        res.status(404).send('Error');
+      }
+    })
+    .catch(error => {
+      console.error('Error al actualizar la información:', error);
+      res.status(500).send('Error al actualizar la información');
+    });
+});
+
+router.get('/info', (req, res) => {
+Info.find()
+  .then(data => {
+  res.json(data);
+  })
+  .catch(error => {
+  console.error('Error al obtener los platillos:', error);
+  res.status(500).send('Error al obtener los platillos');
+  });
+});
+
 router.post('/register', async (req, res) => {
     const { nombre, cedula, email, password, ingreso, egreso } = req.body;
     const newUser = new user ({nombre, cedula, email, password, ingreso, egreso});

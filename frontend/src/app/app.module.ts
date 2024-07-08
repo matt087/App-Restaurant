@@ -31,7 +31,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MenuComponent,
     QualificationComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
