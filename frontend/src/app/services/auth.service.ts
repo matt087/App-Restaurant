@@ -16,11 +16,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router,  @Inject(PLATFORM_ID) private platformId: Object,
   @Inject(DOCUMENT) private document: Document ) { }
 
-  singUp(user: { email: string; password: string; }){
+  singUp(user: { nombre: string; email: string; numero: string; direccion: string; referencia: string; password1: string; password2: string; }){
     return this.http.post<any>(this.URL + '/register',user);
   }
   
-  signIn(user: { email: string; password: string; }): Observable<any> {
+  signIn(user: { email: string; password1: string; }): Observable<any> {
     return this.http.post<any>(`${this.URL}/login`, user).pipe(
       catchError(error => {
         // Manejo de errores
@@ -33,7 +33,6 @@ export class AuthService {
     if (typeof window !== 'undefined' && window.localStorage) {
       return !!localStorage.getItem('token');
     } else {
-      console.log('no')
       return false;
     }
   }

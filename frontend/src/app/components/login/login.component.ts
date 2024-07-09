@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   user = {
     email: '',
-    password:''
+    password1:''
   }
 
   loginForm: FormGroup;
@@ -20,7 +20,7 @@ export class LoginComponent {
     private router:Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password1: ['', Validators.required]
     });
   }
 
@@ -31,10 +31,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
       console.log('Email:', this.user.email);
-      console.log('Password:', this.user.password);
-      // Realizar la autenticación con el servidor
-    }
-    this.authService.signIn(this.user)
+      console.log('Password:', this.user.password1);
+      this.authService.signIn(this.user)
       .subscribe(
         res => {
           console.log(res);
@@ -47,6 +45,11 @@ export class LoginComponent {
             alert('Credenciales incorrectas. Inténtelo de nuevo.');
           }
         }
-      );
+      );    
+    }
+    else{
+      console.log('Invalido')
+    }
+    
   }
 }

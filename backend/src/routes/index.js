@@ -94,18 +94,31 @@ Info.find()
 
 //LOGIN
 router.post('/register', async (req, res) => {
-    const { nombre, cedula, email, password} = req.body;
-    const newUser = new User ({nombre, cedula, email, password});
-    await newUser.save();
-    const token = jwt.sign({_id: newUser._id}, 'secretKeyRestaurantMeat');    //OJO, esta palabra es importante
-    res.status(200).json({_id: newUser._id});
-})
+  const { nombre, email, numero, direccion, referencia, password1, password2 } = req.body;
+
+  // Verificar si las contraseñas coinciden
+  if (password1 !== password2) {
+      return res.status(400).json({ error: "Las contraseñas no coinciden" });
+  }
+
+  const newUser = new User ({ nombre, email, numero, direccion, referencia, password1, password2 });
+  
+  try {
+      await newUser.save();
+      const token = jwt.sign({_id: newUser._id}, 'secretKeyRestaurantMeat');
+      res.status(200).json({_id: newUser._id});
+
+  } catch (error) {
+      res.status(400).json({ error: error.message });
+  }
+});
+
 
 router.post('/login', async(req, res) =>{
-    const {email, password}= req.body;
+    const {email, password1}= req.body;
     const userFind = await User.findOne({email});
     if(!userFind) return res.status(401).send("El correo no existe")
-    if(userFind.password !== password) return res.status(401).send("incorrecta")
+    if(userFind.password1 !== password1) return res.status(401).send("incorrecta")
     const token = jwt.sign({ id: User._id}, 'secretKeyRestaurantMeat');
     return res.status(200).json({token});
 })
@@ -115,9 +128,7 @@ router.put('/update', async (req, res) => {
     try {
         const userFind = await User.findOne({ email });
         if (!userFind) return res.status(404).send("Usuario no encontrado");
-        console.log(userFind.password);
-        userFind.password = newPassword;
-        console.log(userFind.password);
+        userFind.password1 = newPassword;
         await userFind.save();
         res.status(200).send("Contraseña actualizada correctamente");
     } catch (error) {
@@ -126,12 +137,12 @@ router.put('/update', async (req, res) => {
 })
 
 router.delete('/delete', async (req, res) =>{
-    const {email, password} = req.body;
+    const {email, password1} = req.body;
     try
     {
         const userFind = await User.findOne({ email });
         if (!userFind) return res.status(401).send("El correo no existe");
-        if (userFind.password !== password) return res.status(401).send("Contraseña incorrecta");
+        if (userFind.password1 !== password1) return res.status(401).send("Contraseña incorrecta");
 
         
         await userFind.deleteOne({_id: user._id});

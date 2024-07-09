@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -8,16 +11,26 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  user = {
+    nombre: '',
+    email: '',
+    numero: '',
+    direccion: '',
+    referencia: '',
+    password1: '',
+    password2: ''
+  }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService:AuthService,
+    private router:Router) {
     this.registerForm = this.fb.group({
-      name: ['', Validators.required],
+      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
-      reference: [''],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      numero: ['', Validators.required],
+      direccion: ['', Validators.required],
+      referencia: [''],
+      password1: ['', Validators.required],
+      password2: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -32,17 +45,28 @@ export class RegisterComponent {
     return null;
   }
 
-  onSubmit(): void {
+  singUp(){
     if (this.registerForm.valid) {
-      // Aquí puedes manejar la lógica de registro
-      const { name, email, phone, address, reference, password } = this.registerForm.value;
-      console.log('Nombres:', name);
-      console.log('Email:', email);
-      console.log('Número Telefónico:', phone);
-      console.log('Dirección:', address);
-      console.log('Referencia de Vivienda:', reference);
-      console.log('Contraseña:', password);
-      // Realizar el registro con el servidor
+      this.user = this.registerForm.value;
+      console.log('Nombres:', this.user.nombre);
+      console.log('Email:', this.user.email);
+      console.log('Número Telefónico:', this.user.numero);
+      console.log('Dirección:', this.user.direccion);
+      console.log('Referencia de Vivienda:', this.user.referencia);
+      console.log('Contraseña:', this.user.password1);
+
+      this.authService.singUp(this.user)
+      .subscribe(
+        res => {
+          console.log(res)
+          //localStorage.setItem('token', res.token);
+          alert('Usuario registrado');
+          this.router.navigate(['/'])
+        },
+        err => console.log(err)
+      )
     }
+    
   }
+  
 }
