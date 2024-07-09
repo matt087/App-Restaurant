@@ -1,9 +1,9 @@
 .register-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Cambia align-items a flex-start para mover la tarjeta hacia arriba */
-    height: 80vh; /* Reduce la altura para mover la tarjeta hacia arriba */
-    padding-top: 5%; /* Añade un poco de padding superior para margen */
+    align-items: flex-start; 
+    height: 90vh; 
+    padding-top: 5vh; 
     margin-bottom: 15%;
   }
   
@@ -17,6 +17,8 @@
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
+    font-family: "Wellfleet", monospace;
+    color: #ECB100;
   }
   
   .full-width {

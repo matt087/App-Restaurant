@@ -21,7 +21,7 @@ export class PedidoComponent {
     }, 0);
   }
 
-  addDishToOrder(dish: any, quantity: number): void {
+  /*addDishToOrder(dish: any, quantity: number): void {
     const existingDish = this.order.dishes.find(d => d.dishId === dish._id);
     if (existingDish) {
       existingDish.quantity += quantity;
@@ -49,5 +49,5 @@ export class PedidoComponent {
       totalPrice: 0
     };
     this.selectedDishes = [];
-  }
+  }*/
 }

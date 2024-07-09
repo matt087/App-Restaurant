@@ -10,9 +10,11 @@ import { CalificacionesService } from '../../services/calificaciones.service';
 })
 export class QualificationComponent {
 
-  waiterName: string = '';
-  rating: number = 0;
-  comment: string = '';
+   data = {
+    waiterName: '',
+    rating: '',
+    comment: ''
+  };
 
   qualificationForm: FormGroup;
   qualities: string[] = ['Excelente', 'Muy Bueno', 'Bueno', 'Regular', 'Malo'];
@@ -25,37 +27,28 @@ export class QualificationComponent {
     });
     this.qualificationForm = this.fb.group({
       waiterName: ['', Validators.required],
-      serviceQuality: ['', Validators.required],
-      friendliness: ['', Validators.required],
-      comments: ['']
+      rating: ['', Validators.required],
+      comment: ['']
     });
   }
 
   ngOnInit(): void {}
 
-  enviarCalificacion() {
-    const data = {
-      waiterName: this.waiterName,
-      rating: this.rating,
-      comment: this.comment
-    };
-
-    this.qs.calificacion(data)
+  onSubmit(): void {
+    if(this.qualificationForm.valid){
+      this.data = this.qualificationForm.value;
+      console.log(this.data);
+    }
+    this.qs.calificacion(this.data)
     .subscribe(
       (response) => {
         console.log('Calificación guardada correctamente:', response);
-        alert('Calificación enviada correctamente.');  
+        alert('Calificación enviada correctamente.');
+        this.qualificationForm.reset();  
       },
       (error) => {
         console.error('Error al guardar calificación:', error);
       }
     );
-  }
-
-  onSubmit(): void {
-    if (this.qualificationForm.valid) {
-      console.log(this.qualificationForm.value);
-      
-    }
   }
 }

@@ -14,7 +14,7 @@
   
           <mat-form-field appearance="fill">
             <mat-label>Calidad del Servicio</mat-label>
-            <mat-select formControlName="serviceQuality" required>
+            <mat-select formControlName="rating" required>
               <mat-option *ngFor="let quality of qualities" [value]="quality">
                 {{ quality }}
               </mat-option>
@@ -23,7 +23,7 @@
   
           <mat-form-field appearance="fill">
             <mat-label>Comentarios Adicionales</mat-label>
-            <textarea matInput formControlName="comments"></textarea>
+            <textarea matInput formControlName="comment"></textarea>
           </mat-form-field>
   
           <button mat-raised-button color="primary" type="submit" [disabled]="!qualificationForm.valid">Enviar</button>
