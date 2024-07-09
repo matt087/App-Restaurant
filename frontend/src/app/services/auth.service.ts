@@ -33,6 +33,7 @@ export class AuthService {
     if (typeof window !== 'undefined' && window.localStorage) {
       return !!localStorage.getItem('token');
     } else {
+      console.log('no')
       return false;
     }
   }

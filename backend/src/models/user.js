@@ -5,9 +5,7 @@ const userSchema = new Schema({
     nombre: String,
     cedula: String,
     email: String,
-    password: String,
-    ingreso: Number,
-    egreso: Number 
+    password: String
 },{
         timestamps: true //campo adicional del método: createdup y updatedup
  });

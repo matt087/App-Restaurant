@@ -4,7 +4,7 @@
         <mat-card-title class="login-title">Inicio de sesión</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" type="email" required>

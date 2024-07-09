@@ -9,4 +9,4 @@ const infoSchema = new Schema({
         timestamps: true //campo adicional del método: createdup y updatedup
  });
 
-module.exports = model('Información', infoSchema); //exportar
+module.exports = model('Information', infoSchema); //exportar
