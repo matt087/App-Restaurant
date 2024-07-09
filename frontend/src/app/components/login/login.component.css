@@ -1,8 +1,10 @@
 .login-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    height: 80vh; /* Reduce la altura para mover la tarjeta hacia arriba */
+    padding-top: 5%;
+    margin-bottom: -7%;
   }
   
   mat-card {
@@ -25,5 +27,19 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+  }
+
+  .register-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .register-link a {
+    color: #E53935; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
   }
   

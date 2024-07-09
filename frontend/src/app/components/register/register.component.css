@@ -1,0 +1,50 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambia align-items a flex-start para mover la tarjeta hacia arriba */
+    height: 80vh; /* Reduce la altura para mover la tarjeta hacia arriba */
+    padding-top: 5%; /* Añade un poco de padding superior para margen */
+    margin-bottom: 15%;
+  }
+  
+  mat-card {
+    width: 600px;
+    padding: 20px;
+    background-color: #444;
+  }
+  
+  .register-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .register-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column; /* Organiza los enlaces en columna */
+    text-align: center;
+  }
+  
+  .footer-links div {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    color: #E53935; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+  }
