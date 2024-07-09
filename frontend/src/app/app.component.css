@@ -2,6 +2,9 @@
     background-color: #333; /* Fondo oscuro para la barra de navegación */
     color: #fff; /* Color del texto en la barra de navegación */
     height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .logo{
     height: 13vh;
@@ -26,9 +29,18 @@
     font-size: 2.5rem; /* Tamaño de fuente para el nombre del restaurante */
     font-family: "Wellfleet", monospace;
   }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
   
   .nav-links {
     display: flex;
+    justify-content: center;
+    flex-grow: 1;
   }
   
   .nav-links button {
@@ -43,4 +55,20 @@
     border-radius: 5px; /* Bordes redondeados */
   }
 
+  .auth-buttons {
+    display: flex;
+    margin-left: auto; /* Mueve los botones de autenticación a la derecha */
+  }
+  
+  .auth-buttons button {
+    color: #E53935; /* Color del texto de los botones de autenticación */
+    margin: 0 10px; /* Espacio entre los botones */
+    font-size: 17px;
+  }
+  
+  .auth-buttons button:hover {
+    background-color: #fff; /* Color de fondo blanco al pasar el mouse */
+    color: #333; /* Color del texto al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+  }
   

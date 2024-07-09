@@ -6,11 +6,18 @@
   <div class="brand">
     <span class="brand-name">Casa ApiRes</span>
   </div>
-  <div class="nav-links">
-    <button mat-button [routerLink]="['/home']" routerLinkActive="active-link">Home</button>
-    <button mat-button [routerLink]="['/menu']" routerLinkActive="active-link">Menú</button>
-    <button mat-button [routerLink]="['/qualification']" routerLinkActive="active-link">Calificación</button>
-    <button mat-button [routerLink]="['/contact']" routerLinkActive="active-link">Contáctanos</button>
+  <div class="nav-container">
+    <div class="nav-links">
+      <button mat-button [routerLink]="['/home']" routerLinkActive="active-link">Home</button>
+      <button mat-button [routerLink]="['/menu']" routerLinkActive="active-link">Menú</button>
+      <button mat-button [routerLink]="['/pedido']" routerLinkActive="active-link">Pedidos</button>
+      <button mat-button [routerLink]="['/qualification']" routerLinkActive="active-link">Calificación</button>
+      <button mat-button [routerLink]="['/contact']" routerLinkActive="active-link">Contáctanos</button>
+    </div>
+    <div class="auth-buttons">
+      <button mat-button [routerLink]="['/login']" routerLinkActive="active-link">Iniciar sesión</button>
+      <button mat-button [routerLink]="['/register']" routerLinkActive="active-link">Registrarse</button>
+    </div>
   </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -23,6 +23,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { MatSliderModule } from '@angular/material/slider';
     QualificationComponent,
     ContactComponent,
     FooterComponent,
+    RegisterComponent,
+    LoginComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSnackBarModule
   ],
   providers: [
     provideClientHydration(),
