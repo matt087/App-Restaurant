@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
@@ -48,6 +49,7 @@ import { AuthGuard } from './auth.guard';
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,
+    MatTableModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PedidosService {
   private apiUrl = 'http://localhost:3000'; 
   constructor(private http: HttpClient) { }
-  makeOrder(order: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/make-order`, order);
+  placeOrder(order: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/order`, order);
   }
 }

@@ -1,53 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PedidosService } from '../../services/pedidos.service';
+import { PlatillosService } from '../../services/platillos.service';
+import { Platillo } from '../../models/platillo';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.component.html',
-  styleUrl: './pedido.component.css'
+  styleUrls: ['./pedido.component.css']
 })
-export class PedidoComponent {
-  order: any = {
-    user: { name: '' },
-    dishes: [],
-    totalPrice: 0
-  };
+export class PedidoComponent implements OnInit {
+  products: Platillo[] = [];
+  orderForm: FormGroup;
 
-  selectedDishes: any[] = [];
-
-  constructor(private pser:PedidosService){}
-  calculateTotalPrice(): void {
-    this.order.totalPrice = this.selectedDishes.reduce((total, dish) => {
-      return total + dish.precio * dish.quantity;
-    }, 0);
+  constructor(
+    private pser: PedidosService,
+    private fb: FormBuilder,
+    private platser: PlatillosService
+  ) {
+    this.orderForm = this.fb.group({
+      items: this.fb.array([])
+    });
   }
 
-  /*addDishToOrder(dish: any, quantity: number): void {
-    const existingDish = this.order.dishes.find(d => d.dishId === dish._id);
-    if (existingDish) {
-      existingDish.quantity += quantity;
-    } else {
-      this.order.dishes.push({ dishId: dish._id, quantity });
-      this.selectedDishes.push({ ...dish, quantity });
-    }
-    this.calculateTotalPrice();
+  ngOnInit() {
+    this.platser.getData().subscribe(data => {
+      this.products = data;
+      console.log(this.products);
+      this.initializeForm();
+    });
   }
 
-  makeOrder(): void {
-    this.pser.makeOrder(this.order).subscribe(
+  initializeForm() {
+    this.orderForm.setControl('items', this.fb.array(this.products.map(product => this.createItem(product))));
+  }
+
+  createItem(product: Platillo): FormGroup {
+    return this.fb.group({
+      nombre: [product.nombre],
+      precio: [product.precio],
+      cantidad: [0, [Validators.required, Validators.min(0)]]
+    });
+  }
+
+  get items(): FormArray {
+    return this.orderForm.get('items') as FormArray;
+  }
+
+  onSubmit() {
+    const formValue = this.orderForm.value;
+    const order = {
+      products: formValue.items,
+      total: formValue.items.reduce((acc: number, item: { precio: number; cantidad: number }) => acc + item.precio * item.cantidad, 0)
+    };
+
+    this.pser.placeOrder(order).subscribe(
       response => {
-        console.log(response.message);
-        this.resetOrder(); // Limpiar el formulario de pedido
+        console.log('Order placed successfully', response);
+        alert('¡El pedido ha sido realizado con éxito!');
+        this.initializeForm();
       },
-      error => console.error('Error al realizar el pedido', error)
+      error => {
+        console.error('Error placing order', error);
+      }
     );
   }
-
-  resetOrder(): void {
-    this.order = {
-      user: { name: '' },
-      dishes: [],
-      totalPrice: 0
-    };
-    this.selectedDishes = [];
-  }*/
 }

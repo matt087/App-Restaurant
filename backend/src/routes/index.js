@@ -130,14 +130,16 @@ router.post('/register', async (req, res) => {
 });
 
 
-router.post('/login', async(req, res) =>{
-    const {email, password1}= req.body;
-    const userFind = await User.findOne({email});
-    if(!userFind) return res.status(401).send("El correo no existe")
-    if(userFind.password1 !== password1) return res.status(401).send("incorrecta")
-    const token = jwt.sign({ id: User._id}, 'secretKeyRestaurantMeat');
-    return res.status(200).json({token});
-})
+router.post('/login', async (req, res) => {
+  const { email, password1 } = req.body;
+  const userFind = await User.findOne({ email });
+  if (!userFind) return res.status(401).send("El correo no existe");
+  if (userFind.password1 !== password1) return res.status(401).send("incorrecta");
+  const token = jwt.sign({ id: userFind._id, name: userFind.nombre }, 'secretKeyRestaurantMeat');
+  return res.status(200).json({ token });
+});
+
+
 
 router.put('/update', async (req, res) => {
     const { email, newPassword } = req.body;
@@ -172,52 +174,64 @@ router.delete('/delete', async (req, res) =>{
 })
 
 //PEDIDOS
-router.post('/make-orden', verifyToken, async (req, res) => {
+router.post('/order', verifyToken, async (req, res) => {
+  const { products } = req.body;
+
+  if (!products || products.length === 0) {
+      return res.status(400).send('El listado de productos es requerido');
+  }
+
+  let total = 0;
+  products.forEach(product => {
+      total += product.precio * product.cantidad;
+      console.log(product);
+  });
+
+  const newOrder = new Order({
+      userName: req.userName,
+      products: products,
+      total: total
+  });
+
   try {
-    const { cliente, productos } = req.body;
-
-    let total = 0;
-    for (const item of productos) {
-      let menuItem;
-      if (item.menuItem) {
-        menuItem = await MenuItem.findById(item.menuItem);
-        if (!menuItem) {
-          console.log(`Producto no encontrado para ID: ${item.menuItem}`);
-        }
-      }
-      
-      if (menuItem) {
-        total += menuItem.price * item.cantidad;
-      }
-    }
-
-    const newPedido = new Order({ cliente, productos, total });
-    const savedPedido = await newPedido.save();
-    res.status(201).json(savedPedido);
-  } catch (err) {
-    console.error('Error al crear la orden:', err);
-    res.status(500).json({ message: err.message });
+      const savedOrder = await newOrder.save();
+      res.status(201).json(savedOrder);
+  } catch (error) {
+      console.error('Error al realizar el pedido:', error);
+      res.status(500).send('Hubo un problema al realizar el pedido');
   }
 });
 
+
+
+
 module.exports = router;
 
-//En la funcion la cabecera se la debe definir en el postman dando un valor, en este caso se debe dar el token 
-function verifyToken(req, res, next){
-    if(!req.headers.authorization){
-        console.log("1");
-        return res.status(401).send('Unathorize Request 1');
-    }
-    //se coloca por defecto la palabra bearer espacio y el token obtenido
-    //dividir el string recibido 
-    const token = req.headers.authorization.split(' ')[1]// crea un arreglo ['Bearer', 'token']
-     if (token == 'null'){
-        console.log("2");
-        return res.status(401).send('Unathorize Request');
-     }
+function verifyToken(req, res, next) {
+  if (!req.headers.authorization) {
+      console.log("1");
+      return res.status(401).send('Unauthorized Request 1');
+  }
+  // Se coloca por defecto la palabra bearer espacio y el token obtenido
+  // Dividir el string recibido 
+  const token = req.headers.authorization.split(' ')[1]; // crea un arreglo ['Bearer', 'token']
+  if (token === 'null') {
+      console.log("2");
+      return res.status(401).send('Unauthorized Request');
+  }
 
-     const payload = jwt.verify(token, 'secretKeyRestaurantMeat') //Contenido del token
-     //console.log(payload)// muestra los datos contenidos en el payload deberia ser el id del usuario
-     req.userId = payload._id ;
-     next();
+  let payload;
+  try {
+      payload = jwt.verify(token, 'secretKeyRestaurantMeat'); // Contenido del token
+  } catch (error) {
+      console.log("3");
+      return res.status(401).send('Unauthorized Request');
+  }
+
+  // Asignar los valores del payload al objeto req
+  req.userId = payload.id;
+  req.userName = payload.name;
+  next();
 }
+
+  
