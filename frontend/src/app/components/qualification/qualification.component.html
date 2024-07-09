@@ -6,7 +6,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Nombre del Mesero</mat-label>
             <mat-select formControlName="waiterName" required>
-                <mat-option *ngFor="let quality of waitressOptions" [value]="quality">
+                <mat-option *ngFor="let quality of waitressOptions" [value]="quality.nombre + ' ' +quality.apellido">
                   {{ quality.nombre + ' '+ quality.apellido}}
                 </mat-option>
               </mat-select>
