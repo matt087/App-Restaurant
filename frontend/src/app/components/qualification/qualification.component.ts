@@ -9,6 +9,11 @@ import { CalificacionesService } from '../../services/calificaciones.service';
   styleUrl: './qualification.component.css'
 })
 export class QualificationComponent {
+
+  waiterName: string = '';
+  rating: number = 0;
+  comment: string = '';
+
   qualificationForm: FormGroup;
   qualities: string[] = ['Excelente', 'Muy Bueno', 'Bueno', 'Regular', 'Malo'];
   waitressOptions: Mesero[] = [];
@@ -28,11 +33,29 @@ export class QualificationComponent {
 
   ngOnInit(): void {}
 
+  enviarCalificacion() {
+    const data = {
+      waiterName: this.waiterName,
+      rating: this.rating,
+      comment: this.comment
+    };
+
+    this.qs.calificacion(data)
+    .subscribe(
+      (response) => {
+        console.log('Calificación guardada correctamente:', response);
+        alert('Calificación enviada correctamente.');  
+      },
+      (error) => {
+        console.error('Error al guardar calificación:', error);
+      }
+    );
+  }
+
   onSubmit(): void {
     if (this.qualificationForm.valid) {
       console.log(this.qualificationForm.value);
       
-      // aquí podrías manejar el envío del formulario
     }
   }
 }

@@ -13,4 +13,8 @@ export class CalificacionesService {
   getWaiter(): Observable<any> {
     return this.http.get<Mesero>(`${this.apiUrl}/waiters`);
   }
+
+  calificacion(data: any): Observable<any>{
+    return this.http.post<any>(this.apiUrl+'/rate', data);
+  }
 }

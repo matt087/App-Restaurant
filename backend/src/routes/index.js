@@ -5,6 +5,8 @@ const Dish = require('../models/dish');
 const Waiter = require('../models/waiter');
 const Info = require('../models/info');
 const User = require('../models/user');
+const Order = require('../models/order')
+const waiterRating = require('../models/waiterRating');
 
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
@@ -91,6 +93,20 @@ Info.find()
   });
 });
 
+router.post('/rate', async (req, res) => {
+  try {
+    const { waiterName, rating, comment } = req.body;
+    const newRating = new waiterRating({
+      waiterName,
+      rating,
+      comment,
+    });
+    const savedRating = await newRating.save();
+    res.status(201).json(savedRating);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 //LOGIN
 router.post('/register', async (req, res) => {
@@ -155,12 +171,34 @@ router.delete('/delete', async (req, res) =>{
     
 })
 
-//Se ejecuta primero la ruta a continuación se ejecuta la funcion 
-router.get('/private-task', verifyToken,(req, res) =>{
-    res.json([
-        //aqui agregar la parte privada
-    ])
-})
+//PEDIDOS
+router.post('/make-orden', verifyToken, async (req, res) => {
+  try {
+    const { cliente, productos } = req.body;
+
+    let total = 0;
+    for (const item of productos) {
+      let menuItem;
+      if (item.menuItem) {
+        menuItem = await MenuItem.findById(item.menuItem);
+        if (!menuItem) {
+          console.log(`Producto no encontrado para ID: ${item.menuItem}`);
+        }
+      }
+      
+      if (menuItem) {
+        total += menuItem.price * item.cantidad;
+      }
+    }
+
+    const newPedido = new Order({ cliente, productos, total });
+    const savedPedido = await newPedido.save();
+    res.status(201).json(savedPedido);
+  } catch (err) {
+    console.error('Error al crear la orden:', err);
+    res.status(500).json({ message: err.message });
+  }
+});
 
 module.exports = router;
 
