@@ -4,6 +4,7 @@ const router = Router();
 const Dish = require('../models/dish');
 const Waiter = require('../models/waiter');
 const Info = require('../models/info');
+const User = require('../models/user');
 
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
