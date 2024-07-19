@@ -40,7 +40,7 @@ export class QualificationComponent implements OnInit {
     if (this.qualificationForm.valid) {
       this.data = {
         ...this.qualificationForm.value,
-        userName: this.as.getName() 
+        userName: this.as.getName()?.replace(/\s+/g,'')??''
       };
       console.log(this.data);
     }
