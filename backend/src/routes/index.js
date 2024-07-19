@@ -93,21 +93,6 @@ Info.find()
   });
 });
 
-router.post('/rate', async (req, res) => {
-  try {
-    const { waiterName, rating, comment } = req.body;
-    const newRating = new waiterRating({
-      waiterName,
-      rating,
-      comment,
-    });
-    const savedRating = await newRating.save();
-    res.status(201).json(savedRating);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
-
 //LOGIN
 router.post('/register', async (req, res) => {
   const { nombre, email, numero, direccion, referencia, password1, password2 } = req.body;
@@ -130,31 +115,14 @@ router.post('/register', async (req, res) => {
 });
 
 
-/*router.post('/login', async(req, res) =>{
+router.post('/login', async(req, res) =>{
   const {email, password1}= req.body;
   const userFind = await User.findOne({email});
   if(!userFind) return res.status(401).send("El correo no existe")
   if(userFind.password1 !== password1) return res.status(401).send("incorrecta")
-  let rol = "usuario";
-  if (userFind.isAdmin) {
-      rol = "administrador";
-  } else if (userFind.isOperator) {
-      rol = "operador";
-  }
-  const token = jwt.sign({ id: userFind._id, role: rol }, 'secretKeyDCICC');    
-  return res.status(200).json({token, role: rol});
-})*/
-
-router.post('/login', async (req, res) => {
-  const { email, password1 } = req.body;
-  const userFind = await User.findOne({ email });
-  if (!userFind) return res.status(401).send("El correo no existe");
-  if (userFind.password1 !== password1) return res.status(401).send("incorrecta");
-  const token = jwt.sign({ id: userFind._id, name: userFind.nombre }, 'secretKeyRestaurantMeat');
-  return res.status(200).json({ token });
-});
-
-
+  const token = jwt.sign({ id: userFind._id, nombre: userFind.nombre }, 'secretKeyRestaurantMeat');    
+  return res.status(200).json({token, nombre: userFind.nombre });
+})
 
 router.put('/update', async (req, res) => {
     const { email, newPassword } = req.body;
@@ -217,6 +185,68 @@ router.post('/order', verifyToken, async (req, res) => {
   }
 });
 
+//CALIFICACION
+router.post('/rate', verifyToken, async (req, res) => {
+  try {
+    const { waiterName, rating, comment, userName } = req.body;
+    const newRating = new waiterRating({
+      waiterName,
+      rating,
+      comment,
+      userName
+    });
+    const savedRating = await newRating.save();
+    res.status(201).json(savedRating);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.delete('/rate/:id', verifyToken, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedRating = await waiterRating.findByIdAndDelete(id);
+    if (!deletedRating) {
+      return res.status(404).json({ message: 'Calificación no encontrada' });
+    }
+    res.status(200).json({ message: 'Calificación eliminada correctamente' });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.put('/rate/:id', verifyToken, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { waiterName, rating, comment, userName } = req.body;
+    const updatedRating = await waiterRating.findByIdAndUpdate(
+      id,
+      { waiterName, rating, comment, userName },
+      { new: true, runValidators: true }
+    );
+    if (!updatedRating) {
+      return res.status(404).json({ message: 'Calificación no encontrada' });
+    }
+    res.status(200).json(updatedRating);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.get('/rate/user/:userName', verifyToken, async (req, res) => {
+  try {
+    const userName = req.params.userName;
+    const ratings = await waiterRating.find({ userName: userName }, 'createdAt userName waiterName rating comment');
+    if (ratings.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron calificaciones para el usuario especificado' });
+    }
+    res.status(200).json(ratings);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
 
 
 
@@ -232,7 +262,7 @@ function verifyToken(req, res, next) {
   const token = req.headers.authorization.split(' ')[1]; // crea un arreglo ['Bearer', 'token']
   if (token === 'null') {
       console.log("2");
-      return res.status(401).send('Unauthorized Request');
+      return res.status(401).send('Unauthorized Request 2');
   }
 
   let payload;
