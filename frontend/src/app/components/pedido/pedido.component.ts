@@ -26,7 +26,6 @@ export class PedidoComponent implements OnInit {
   ngOnInit() {
     this.platser.getData().subscribe(data => {
       this.products = data;
-      console.log(this.products);
       this.initializeForm();
     });
   }

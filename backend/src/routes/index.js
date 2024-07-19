@@ -130,6 +130,21 @@ router.post('/register', async (req, res) => {
 });
 
 
+/*router.post('/login', async(req, res) =>{
+  const {email, password1}= req.body;
+  const userFind = await User.findOne({email});
+  if(!userFind) return res.status(401).send("El correo no existe")
+  if(userFind.password1 !== password1) return res.status(401).send("incorrecta")
+  let rol = "usuario";
+  if (userFind.isAdmin) {
+      rol = "administrador";
+  } else if (userFind.isOperator) {
+      rol = "operador";
+  }
+  const token = jwt.sign({ id: userFind._id, role: rol }, 'secretKeyDCICC');    
+  return res.status(200).json({token, role: rol});
+})*/
+
 router.post('/login', async (req, res) => {
   const { email, password1 } = req.body;
   const userFind = await User.findOne({ email });

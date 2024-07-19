@@ -30,6 +30,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './auth.guard';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthGuard } from './auth.guard';
     RegisterComponent,
     LoginComponent,
     PedidoComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule,
