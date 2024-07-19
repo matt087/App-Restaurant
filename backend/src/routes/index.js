@@ -233,6 +233,15 @@ router.put('/rate/:id', verifyToken, async (req, res) => {
   }
 });
 
+router.get('/rate', verifyToken, async (req, res) => {
+  try {
+    const ratings = await waiterRating.find({}, 'createdAt userName waiterName rating comment');
+    res.status(200).json(ratings);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 router.get('/rate/user/:userName', verifyToken, async (req, res) => {
   try {
     const userName = req.params.userName;
