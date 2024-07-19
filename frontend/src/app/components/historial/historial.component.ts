@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 export interface HistorialData {
   fecha: Date;
   nombre: string;
-  calificacion: string;
+  calificacion: number;
   comentario: string;
 }
 
 const ELEMENT_DATA: HistorialData[] = [
-  { fecha: new Date(), nombre: 'Juan Pérez', calificacion: 'Excelente', comentario: 'El mejor servicio que he visto' },
-  { fecha: new Date(), nombre: 'Ana Gómez', calificacion: 'Muy bueno', comentario: 'Podría mejorar pero estuvo muy bien' },
+  { fecha: new Date(), nombre: 'Juan Pérez', calificacion: 5, comentario: 'Excelente servicio' },
+  { fecha: new Date(), nombre: 'Ana Gómez', calificacion: 4, comentario: 'Muy buen servicio' },
   // Agrega más datos de ejemplo según sea necesario
 ];
 
@@ -20,10 +21,21 @@ const ELEMENT_DATA: HistorialData[] = [
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-  displayedColumns: string[] = ['fecha', 'nombre', 'calificacion', 'comentario'];
+  displayedColumns: string[] = ['fecha', 'nombre', 'calificacion', 'comentario', 'acciones'];
   dataSource = new MatTableDataSource<HistorialData>(ELEMENT_DATA);
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  edit(element: HistorialData): void {
+    console.log('Editando', element);
+    this.router.navigate(['/editQualification'], { state: { data: element } });
+  }
+
+  delete(element: HistorialData): void {
+    console.log('Eliminando', element);
+    // Lógica para eliminar la calificación
+    this.dataSource.data = this.dataSource.data.filter(item => item !== element);
+  }
 }

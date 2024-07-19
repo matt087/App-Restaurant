@@ -1,24 +1,27 @@
 .historial-container {
-    margin: 20px;
-    padding: 20px;
-    background-color: #212121;
-    color: white;
-    border-radius: 8px;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  th.mat-header-cell, td.mat-cell {
-    color: white;
-  }
-  
-  th.mat-header-cell {
-    background-color: #D3B200;
-  }
-  
-  td.mat-cell {
-    background-color: #E53935;
-  }
-  
+  margin: 20px;
+  padding: 20px;
+  background-color: #212121;
+  color: white;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell, td.mat-cell {
+  color: white;
+}
+
+th.mat-header-cell {
+  background-color: #D3B200;
+}
+
+td.mat-cell {
+  background-color: #E53935;
+}
+
+td.mat-cell button {
+  margin-right: 8px;
+}

@@ -1,0 +1,35 @@
+<div class="qualification-form">
+    <mat-card>
+      <mat-card-title>Evaluación de Meseros</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="qualificationForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre del Mesero</mat-label>
+            <mat-select formControlName="waiterName" required>
+                <mat-option *ngFor="let quality of waitressOptions" [value]="quality.nombre + ' ' +quality.apellido">
+                  {{ quality.nombre + ' '+ quality.apellido}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Calidad del Servicio</mat-label>
+            <mat-select formControlName="rating" required>
+              <mat-option *ngFor="let quality of qualities" [value]="quality">
+                {{ quality }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Comentarios Adicionales</mat-label>
+            <textarea matInput formControlName="comment"></textarea>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="!qualificationForm.valid">Enviar</button>
+          <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancelar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

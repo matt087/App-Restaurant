@@ -31,6 +31,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { HistorialComponent } from './components/historial/historial.component';
+import { EditQualificationComponent } from './components/edit-qualification/edit-qualification.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'historial', component: HistorialComponent },
+  { path: 'editQualification', component: EditQualificationComponent },
+  { path: '', redirectTo: '/historial', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
@@ -44,6 +52,7 @@ import { HistorialComponent } from './components/historial/historial.component';
     LoginComponent,
     PedidoComponent,
     HistorialComponent,
+    EditQualificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,8 @@ import { HistorialComponent } from './components/historial/historial.component';
     MatSelectModule,
     MatRadioModule,
     MatSliderModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     provideClientHydration(),

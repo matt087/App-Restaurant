@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { HistorialComponent } from './components/historial/historial.component';
+import { EditQualificationComponent } from './components/edit-qualification/edit-qualification.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pedido', component: PedidoComponent, canActivate:[AuthGuard]},
   { path: 'historial', component: HistorialComponent, canActivate:[AuthGuard]},
+  { path: 'editQualification', component: EditQualificationComponent, canActivate:[AuthGuard]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
